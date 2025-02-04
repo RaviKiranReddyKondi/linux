@@ -1,0 +1,4 @@
+Scripts
+#to copy any file from local to hpc use this
+scp -r /mnt/s/Cocodrie rkondi@smic.hpc.lsu.edu:/work/rkondi/project_bsa-alkalinity/01.RawData/Cocodrie
+in this scp means secure copy protocol, -r means recursive for many files, than path of source file in your  local system and destitation folder path
