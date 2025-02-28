@@ -2,3 +2,10 @@ Scripts
 #to copy any file from local to hpc use this
 scp -r /mnt/s/Cocodrie rkondi@smic.hpc.lsu.edu:/work/rkondi/project_bsa-alkalinity/01.RawData/Cocodrie
 in this scp means secure copy protocol, -r means recursive for many files, than path of source file in your  local system and destitation folder path
+salloc -N20 -n20 -t 01:00:00 -p workq -A hpc_riceomics  for starting interactive session with nodes threads 
+singularity shell -B /work/cchaud3 /home/admin/singularity/gatk-4.5.0.0.sif gatk
+bgzip qtlseq.snpEff.vcf
+bcftools index qtlseq.snpEff.vcf.gz
+bcftools view jn-ju-nb_snp_filtered_qd-fs-mq-dp10.g.vcf.gz --regions 9 > chr9_jn-ju-nb_snp_filtered_qd-fs-mq-dp10.g.vcf
+ SnpSift extractFields chr9_ann.jn-ju-nb_snp.vcf CHROM POS REF ALT "ANN" >chr9_ann.jn-ju-nb_snp.txt
+SnpSift extractFields qtlseq.snpEff.vcf CHROM POS REF ALT "ANN" > qtlseq_ann.snp.txt
